@@ -5,3 +5,5 @@ git clone https://github.com/kidanger/GP_tracks.git tracks
 cd tracks
 make
 ```
+
+Feel free to contribute!

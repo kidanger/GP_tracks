@@ -1,9 +1,8 @@
 ```
-cd GrandPrix-1.1
+cd GrandPrix
 rm -r tracks
-git clone https://github.com/kidanger/GP_tracks.git tracks
-cd tracks
-make
+git clone -b fuel https://github.com/kidanger/GP_tracks.git tracks
+make -C tracks
 ```
 
 Feel free to contribute!

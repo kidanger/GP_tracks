@@ -17,11 +17,12 @@ ELEMENTS = (
 )
 
 
-def convert(srcfile, dstfile):
+def convert(srcfile, dstfile, fuel):
     src = Image.open(srcfile)
     dst = open(dstfile, 'w')
 
-    dst.write(str(src.size[0]) + ' ' + str(src.size[1]) + '\n')
+    dst.write(str(src.size[0]) + ' ' + str(src.size[1]) +
+              ' ' + str(fuel) + '\n')
     for y in range(src.size[1]):
         for x in range(src.size[0]):
             c = src.getpixel((x, y))
@@ -68,7 +69,12 @@ def convert_back(srcfile, dstfile):
 
 if __name__ == '__main__':
     if sys.argv[1].endswith('.png'):
-        convert(sys.argv[1], sys.argv[2])
+        src = sys.argv[1]
+        try:
+            fuel = int(re.findall(r'_(\d+).png$', src)[0])
+        except IndexError:
+            fuel = 1000
+        dst = sys.argv[2]
+        convert(sys.argv[1], sys.argv[2], fuel)
     elif sys.argv[1].endswith('.txt'):
         convert_back(sys.argv[1], sys.argv[2])
-
